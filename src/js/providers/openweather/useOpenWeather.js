@@ -81,17 +81,18 @@ export const fetchReducer = (state, { type, payload }) => {
 };
 
 const useOpenWeather = (options) => {
-  const endpoint = '//api.openweathermap.org/data/3.0/onecall';
+  const endpoint = '//api.openweathermap.org/data/3.0/onecall/timemachine';
   const [state, dispatch] = useReducer(fetchReducer, initialState);
   const { data, errorMessage } = state;
   const [isLoading, setIsLoading] = useState(false);
-  const { unit, lang, key, lon, lat } = options;
+  const { unit, lang, key, lon, lat, dt } = options;
   const params = {
     appid: key,
     lang,
     units: unit,
     lat,
     lon,
+    dt,
   };
 
   const fetchData = async () => {
